@@ -32,7 +32,7 @@ class ViewController: UIViewController {
             scopes: []
             ) {
             builder.setCurrentEnvironment(.live)
-            if let authConfig = PFAuthClientConfig(builder: builder) {
+            if let authConfig = builder.buildAuthClientConfig() {
                 let authenticator = PFAuthenticator(config: authConfig)
                 authenticator?.authenticateForAccessToken(with: self, presenting: self)
             }
@@ -48,6 +48,14 @@ extension ViewController: PFAuthenticationDelegate {
     
     func onAuthenticationStarted(_ authUnivLinkHandler: PFAuthUnivLinkHandler!) {
         print("")
+    }
+    
+    func complete(withFailure failureMessage: Error!) {
+        
+    }
+    
+    func complete(withSuccess result: PFTokenResult!) {
+        
     }
     
 }
